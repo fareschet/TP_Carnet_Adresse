@@ -1,0 +1,75 @@
+/* style.css */
+QLabel {
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+QGroupBox {
+    background-color: #1a6985; /* Couleur de fond */
+    border: 2px solid #bea925;
+    border-radius: 6px; /* Coins arrondis */
+    padding: 8px; /* Espace interne */
+    margin-top: 12px; /* Espacement depuis le haut */
+}
+
+QLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1px;
+}
+
+QPushButton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: #0056b3;
+}
+
+QTableWidget {
+    background-color: #FFF;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+}
+
+QListWidget::item {
+    background-color: #f0f0f0;
+    padding: 1px;
+    border-bottom: 1px solid #ccc;
+}
+
+QListWidget::item:selected {
+    background-color: #135f28;
+    color: white;
+}
+
+QListWidget::header {
+    background-color: #66d284;
+    border: 1px solid #ccc;
+    padding: 1px;
+    color: white;
+}
+
+QTableWidget {
+    background-color: #d1d9db;
+    alternate-background-color: #e0e0e0;
+    border: 1px solid #d0d0d0;
+            }
+
+QHeaderView::section {
+    background-color: #8f9597;
+    color: black;
+    padding: 4px;
+    border: none;
+    font-weight: bold;
+            }
+
+QTableWidget::item {
+   padding: 6px;
+            }

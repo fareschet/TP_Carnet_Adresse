@@ -2,10 +2,12 @@
 from Model import ContactModel
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QTableWidgetItem
+#creer la class controler
 class ContactController:
     def __init__(self):
         self.model = ContactModel.ContactModel()
 
+    #methode d'ajout d'un contact
     def ajouter_contact(self, nom, prenom, telephone, email, contact):
         self.model.ajouter_contact(nom, prenom, telephone, email)
         contact.msgLbl.setVisible(True)
@@ -17,6 +19,7 @@ class ContactController:
         contact.EmailLine.clear()
         contact.visibilite_message_erreur()
 
+    #methode de modification d'un contact
     def modifier_contact(self, contact_id, nom, prenom, telephone, email, contact):
         self.model.modifier_contact(contact_id, nom, prenom, telephone, email)
         contact.msgLbl.setVisible(True)
@@ -31,6 +34,7 @@ class ContactController:
         contact.visibilite_message_erreur()
         contact.annuler_chercher_btn.setVisible(False)
 
+    #methode de supression d'un contact
     def supprimer_contact(self, contact_id, contact):
         self.model.supprimer_contact(contact_id)
         contact.msgLbl.setVisible(True)
@@ -45,6 +49,7 @@ class ContactController:
         contact.visibilite_message_erreur()
         contact.annuler_chercher_btn.setVisible(False)
 
+    #methode d'affichage d'un contact
     def afficher_contacts(self, contact_Table):
         self.data = self.model.afficher_contacts()
         contact_Table.setRowCount(len(self.data))
@@ -63,6 +68,7 @@ class ContactController:
                 contact_Table.item(row, 4).setTextAlignment(Qt.AlignmentFlag.AlignCenter)
                 row += 1
 
+    #methode de recherche d'un contact
     def chercher_contact_controleur(self, champ, value, contact_Table, contact):
         self.data = self.model.chercher_contact_model(champ, value)
         contact_Table.setRowCount(len(self.data))

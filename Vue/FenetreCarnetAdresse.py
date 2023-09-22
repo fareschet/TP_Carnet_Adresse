@@ -5,7 +5,7 @@ from PyQt6.QtGui import (QFont, QRegularExpressionValidator, QPixmap)
 from PyQt6.QtWidgets import (QGroupBox, QLabel, QLineEdit, QListWidget, QListWidgetItem, QMainWindow,
                              QPushButton, QTableWidget, QTableWidgetItem, QWidget)
 from Controleur import ContactControleur
-
+#fenetre principale
 class FenetreCarnetAdresse(QMainWindow):
     def setupUi(self, Fenetre_Carnet_Adresse):
         self.__id = 0
@@ -197,7 +197,7 @@ class FenetreCarnetAdresse(QMainWindow):
         ___qlistwidgetitem4 = self.list_choix_champs.item(4)
         ___qlistwidgetitem4.setText(QCoreApplication.translate("Fenetre_Carnet_Adresse", u"Email", None));
         self.list_choix_champs.setSortingEnabled(__sortingEnabled)
-
+#ajouter ou modifier un contact
     def ajouter_modifier_contact(self):
         btn = self.ajout_modifier_btn.text()
         nom = self.NomLine.text()
@@ -217,7 +217,7 @@ class FenetreCarnetAdresse(QMainWindow):
                     ContactControleur.ContactController().modifier_contact(self.__id, nom, prenom, telephone, email,
                                                                            self)
         self.afficher_liste_contact(self.tableContacts)
-
+#supprimer un contact
     def supprimer_effacer_contact(self):
         btn = self.effacer_supprimer_btn.text()
         if btn == "Supprimer":
@@ -231,7 +231,7 @@ class FenetreCarnetAdresse(QMainWindow):
             self.TelephoneLine.setStyleSheet("background-color: #FFF;")
             self.EmailLine.setStyleSheet("background-color: #FFF;")
         self.afficher_liste_contact(self.tableContacts)
-
+#chercher un contact
     def chercher_contact(self):
         btn = self.chercher_btn.text()
         contenu = self.chercherLine.text()
@@ -251,7 +251,7 @@ class FenetreCarnetAdresse(QMainWindow):
                     ContactControleur.ContactController().chercher_contact_controleur("telephone", contenu, self.tableContacts, self)
                 elif choix == "Email":
                     ContactControleur.ContactController().chercher_contact_controleur("email", contenu, self.tableContacts, self)
-
+#annuler la recherche
     def annuler_chercher_contact(self):
         self.NomLine.setEnabled(True)
         self.PrenomLine.setEnabled(True)
@@ -269,7 +269,7 @@ class FenetreCarnetAdresse(QMainWindow):
         self.EmailLine.clear()
         self.ajout_modifier_btn.setText("Ajouter")
         self.effacer_supprimer_btn.setText("Effacer")
-
+#desactiver l'option de recherche
     def desactiver_pour_la_recherche(self):
         self.annuler_chercher_btn.setVisible(True)
         self.NomLine.setEnabled(False)
@@ -284,7 +284,7 @@ class FenetreCarnetAdresse(QMainWindow):
         self.EmailLine.clear()
         self.ajout_modifier_btn.setText("Ajouter")
         self.effacer_supprimer_btn.setText("Effacer")
-
+#afficher la liste des contact
     def afficher_liste_contact(self, table):
         ContactControleur.ContactController().afficher_contacts(table)
 
@@ -312,7 +312,7 @@ class FenetreCarnetAdresse(QMainWindow):
             self.ajout_modifier_btn.setText("Modifier")
             self.effacer_supprimer_btn.setText("Supprimer")
             self.annuler_chercher_btn.setVisible(True)
-
+#verifier format de telephone
     def verifier_numero_telephone(self):
         regex = QRegularExpression(r"\d{3}-\d{3}-\d{4}")
         validator = QRegularExpressionValidator(regex)
@@ -330,7 +330,7 @@ class FenetreCarnetAdresse(QMainWindow):
             self.TelephoneLine.raise_()
             self.visibilite_message_erreur()
             return False
-
+#verifier format de l'email
     def verifier_email(self):
         verifier_telephone = self.verifier_numero_telephone()
         if verifier_telephone:
@@ -350,7 +350,7 @@ class FenetreCarnetAdresse(QMainWindow):
                 self.EmailLine.raise_()
                 self.visibilite_message_erreur()
                 return False
-
+#visibilite du message d'erreur
     def visibilite_message_erreur(self):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.timing)
